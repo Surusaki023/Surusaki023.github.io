@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColSoft - Inicio</title>
+    <link rel="shortcut icon" href="../img/2.jpg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #1c1c1c;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        nav {
+            margin-left: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        .hero {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+            padding: 20px;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin: 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: #dcdcdc;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out forwards;
+        }
+
+        .hero-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .hero-shapes .circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: #ffd700;
+            border-radius: 50%;
+            top: -50px;
+            left: -50px;
+            opacity: 0.7;
+            animation: moveCircle 5s linear infinite;
+        }
+
+        .hero-shapes .triangle {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 200px solid transparent;
+            border-right: 200px solid transparent;
+            border-bottom: 400px solid #ff6347;
+            bottom: -100px;
+            right: -100px;
+            opacity: 0.7;
+            transform: rotate(20deg);
+            animation: moveTriangle 5s linear infinite;
+        }
+
+        .about {
+            padding: 40px 20px;
+            background-color: #282828;
+            display: flex;
+            justify-content: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-direction: column; /* Default to column on small screens */
+        }
+
+        .about-text {
+            flex: 1;
+            margin-right: 20px;
+            text-align: left;
+        }
+
+        .about h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .about p {
+            font-size: 1.2em;
+            line-height: 1.6em;
+            color: #dcdcdc;
+        }
+
+        .about-image {
+            flex: 1;
+            margin-top: 20px; /* Space between text and image on small screens */
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+            color: #dcdcdc;
+            font-size: 0.9em;
+            margin-top: auto;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes moveCircle {
+            0% {
+                transform: translate(-50px, -50px);
+            }
+            50% {
+                transform: translate(100px, -50px);
+            }
+            100% {
+                transform: translate(-50px, -50px);
+            }
+        }
+
+        @keyframes moveTriangle {
+            0% {
+                transform: rotate(20deg) translate(100px, -100px);
+            }
+            50% {
+                transform: rotate(20deg) translate(-100px, 100px);
+            }
+            100% {
+                transform: rotate(20deg) translate(100px, -100px);
+            }
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.2em;
+            }
+
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-text {
+                margin-right: 0;
+                text-align: center; /* Center text on small screens */
+            }
+
+            .about h2 {
+                font-size: 2em;
+            }
+
+            .about p {
+                font-size: 1em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center; /* Center items on small screens */
+            }
+
+            nav ul li {
+                margin: 10px 0; /* Vertical spacing */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="mision_vision.html">Misión y Visión</a></li>
+                <li><a href="service.html">Servicios</a></li>
+                <li><a href="Objetivos.html">Objetivos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Bienvenidos</h1>
+            <p>Soluciones tecnológicas innovadoras para tu empresa con ColSoft</p>
+        </div>
+        <div class="hero-shapes">
+            <div class="circle"></div>
+            <div class="triangle"></div>
+        </div>
+    </div>
+
+    <section class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Nosotros</h2>
+                <p>Nuestra pasión por la tecnología y el conocimiento profundo de las últimas tendencias nos permiten crear software a medida que se adapta perfectamente a las necesidades de tu negocio. Desde aplicaciones móviles hasta sistemas empresariales de gran envergadura, nuestro equipo de expertos trabaja incansablemente para brindarte soluciones eficientes y confiables.</p>
+                <p>Lo que nos distingue es nuestro enfoque centrado en el cliente. Escuchamos atentamente tus metas y desafíos para diseñar y desarrollar software que no solo resuelva tus problemas actuales, sino que también prepare tu empresa para el futuro digital.</p>
+                <p>Además, ofrecemos un servicio de soporte técnico continuo para asegurarnos de que tu software funcione sin problemas. Creemos que una relación duradera con nuestros clientes es clave para el éxito mutuo.</p>
+                <p>¡Contáctanos hoy y descubre cómo podemos ayudarte a llevar tu negocio al siguiente nivel!</p>
+            </div>
+            <div class="about-image">
+                <img src="fondo.jpg" alt="Imagen de ColSoft">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 ColSoft. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

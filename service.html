@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColSoft - Servicios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../img/2.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #e9ecef;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    align-items: center; /* Alinea el logo y el menú verticalmente */
+    justify-content: space-between; /* Espacio entre logo y menú */
+    background-color: #3b3b3b;
+    padding: 20px 40px; /* Aumenta el padding para un mejor espaciado */
+}
+
+.logo {
+    display: inline-block;
+}
+
+.logo img {
+    height: 50px; /* Ajusta la altura del logo */
+    width: auto; /* Mantiene la proporción */
+    vertical-align: middle; /* Alinea el logo verticalmente */
+}
+
+nav {
+    flex-grow: 1; /* Permite que el menú use el espacio restante */
+    text-align: center; /* Centra el contenido del menú */
+}
+
+nav ul {
+    list-style: none;
+    display: inline-flex; /* Cambiado a inline-flex para centrar */
+    justify-content: center; /* Centra los elementos en la lista */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffcd38;
+}
+
+section.services {
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.service-item {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1 1 250px; /* Flex-grow, flex-shrink, flex-basis */
+    text-align: center;
+}
+
+.service-info {
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilos del modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #3b3b3b;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../img/4.jpg" alt="ColSoft Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"> Inicio</a></li>
+                <li><a href="mision_vision.html"> Misión y Visión</a></li>
+                <li><a href="service.html"> Servicios</a></li>
+                <li><a href="objetivos.html"> Objetivos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="services">
+        <h2>Nuestros Servicios</h2>
+        <div class="services-container">
+            <div class="service-item">
+                <div class="service-info">
+                    <i class="fas fa-laptop-code fa-3x"></i>
+                    <h3>Desarrollo de Software</h3>
+                    <p>Ofrecemos soluciones personalizadas para el desarrollo de aplicaciones de software a medida.</p>
+                    <button class="service-btn" data-service="Desarrollo de Software">Más Información</button>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-info">
+                    <i class="fas fa-chalkboard-teacher fa-3x"></i>
+                    <h3>Capacitación en Tecnología</h3>
+                    <p>Brindamos capacitaciones para potenciar las habilidades tecnológicas de tu equipo.</p>
+                    <button class="service-btn" data-service="Capacitación en Tecnología">Más Información</button>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-info">
+                    <i class="fas fa-lightbulb fa-3x"></i>
+                    <h3>Consultoría Tecnológica</h3>
+                    <p>Asesoramos a empresas en la implementación de soluciones tecnológicas eficientes.</p>
+                    <button class="service-btn" data-service="Consultoría Tecnológica">Más Información</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 ColSoft. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Información Adicional</h2>
+            <p id="modalText">Aquí aparecerá la información adicional sobre el servicio seleccionado.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const buttons = document.querySelectorAll('.service-btn');
+            const modal = document.getElementById("myModal");
+            const span = document.getElementsByClassName("close")[0];
+
+            const serviceInfo = {
+                "Desarrollo de Software": "Nuestro servicio de desarrollo de software se enfoca en crear aplicaciones a medida que se ajusten a las necesidades específicas de cada cliente. Utilizamos las tecnologías más recientes y metodologías ágiles para garantizar que el producto final sea de alta calidad y cumpla con los plazos establecidos. Nuestro equipo de expertos trabaja de la mano con los clientes para asegurar que cada detalle sea considerado.",
+                "Capacitación en Tecnología": "Ofrecemos programas de capacitación diseñados para mejorar las habilidades técnicas de los equipos de trabajo. Nuestras capacitaciones abarcan desde el desarrollo de software hasta la gestión de proyectos tecnológicos, asegurando que tu equipo esté preparado para enfrentar los desafíos del mercado actual. Nos adaptamos a diferentes niveles de conocimiento y ofrecemos cursos prácticos y teóricos.",
+                "Consultoría Tecnológica": "Brindamos servicios de consultoría para ayudar a las empresas a implementar soluciones tecnológicas eficientes. Analizamos los procesos existentes y ofrecemos recomendaciones personalizadas que optimicen la operación y reduzcan costos. Nuestro objetivo es ser un socio estratégico que impulse el crecimiento y la innovación en tu empresa."
+            };
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const serviceName = this.getAttribute('data-service');
+                    document.getElementById("modalTitle").innerText = serviceName;
+                    document.getElementById("modalText").innerText = serviceInfo[serviceName];
+                    modal.style.display = "block";
+                });
+            });
+
+            // Cerrar el modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
