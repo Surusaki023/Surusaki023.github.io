@@ -5,167 +5,248 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ColSoft - Servicios</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="../img/2.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="../vista/img/2.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #e9ecef;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    line-height: 1.6;
-}
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #e9ecef;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
 
-header {
-    display: flex;
-    align-items: center; /* Alinea el logo y el menú verticalmente */
-    justify-content: space-between; /* Espacio entre logo y menú */
-    background-color: #3b3b3b;
-    padding: 20px 40px; /* Aumenta el padding para un mejor espaciado */
-}
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #3b3b3b;
+            padding: 20px 40px;
+        }
 
-.logo {
-    display: inline-block;
-}
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
 
-.logo img {
-    height: 50px; /* Ajusta la altura del logo */
-    width: auto; /* Mantiene la proporción */
-    vertical-align: middle; /* Alinea el logo verticalmente */
-}
+        nav {
+            flex-grow: 1;
+        }
 
-nav {
-    flex-grow: 1; /* Permite que el menú use el espacio restante */
-    text-align: center; /* Centra el contenido del menú */
-}
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
 
-nav ul {
-    list-style: none;
-    display: inline-flex; /* Cambiado a inline-flex para centrar */
-    justify-content: center; /* Centra los elementos en la lista */
-    margin: 0;
-    padding: 0;
-}
+        nav ul li {
+            margin: 0 20px;
+        }
 
-nav ul li {
-    margin: 0 20px;
-}
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px;
+            transition: color 0.3s;
+        }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 10px;
-    transition: color 0.3s;
-}
+        nav ul li a:hover {
+            color: #ffcd38;
+        }
 
-nav ul li a:hover {
-    color: #ffcd38;
-}
+        .menu-toggle {
+            display: none;
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
 
-section.services {
-    padding: 60px 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            transition: 0.3s;
+            z-index: 1000;
+            overflow-y: auto;
+        }
 
-.services-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
+        .sidebar.active {
+            left: 0;
+        }
 
-.service-item {
-    background-color: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex: 1 1 250px; /* Flex-grow, flex-shrink, flex-basis */
-    text-align: center;
-}
+        .sidebar-header {
+            padding: 20px;
+            background-color: #222;
+            color: #fff;
+        }
 
-.service-info {
-    margin-bottom: 10px;
-}
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-h2 {
-    margin-bottom: 20px;
-    color: #333;
-}
+        .sidebar ul li {
+            padding: 10px 20px;
+        }
 
-/* Estilos del modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-    padding-top: 60px;
-}
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+        section.services {
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
 
-footer {
-    background-color: #3b3b3b;
-    padding: 20px;
-    text-align: center;
-    color: #fff;
-    margin-top: auto;
-}
+        .service-item {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1 1 250px;
+            text-align: center;
+        }
 
-footer p {
-    margin: 0;
-}
+        .service-info {
+            margin-bottom: 10px;
+        }
 
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #3b3b3b;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .services-container {
+                flex-direction: column;
+            }
+
+            .service-item {
+                flex: 1 1 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="../img/4.jpg" alt="ColSoft Logo">
+            <img src="../vista/img/4.jpg" alt="ColSoft Logo">
         </div>
         <nav>
             <ul>
-                <li><a href="index.html"> Inicio</a></li>
-                <li><a href="mision_vision.html"> Misión y Visión</a></li>
-                <li><a href="service.html"> Servicios</a></li>
-                <li><a href="objetivos.html"> Objetivos</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="mision_vision.html">Misión y Visión</a></li>
+                <li><a href="service.html">Servicios</a></li>
+                <li><a href="Objetivos.html">Objetivos</a></li>
             </ul>
         </nav>
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
     </header>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+        </div>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="mision_vision.html">Misión y Visión</a></li>
+            <li><a href="service.html">Servicios</a></li>
+            <li><a href="Objetivos.html">Objetivos</a></li>
+        </ul>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
 
     <section class="services">
         <h2>Nuestros Servicios</h2>
@@ -217,6 +298,9 @@ footer p {
             const buttons = document.querySelectorAll('.service-btn');
             const modal = document.getElementById("myModal");
             const span = document.getElementsByClassName("close")[0];
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
 
             const serviceInfo = {
                 "Desarrollo de Software": "Nuestro servicio de desarrollo de software se enfoca en crear aplicaciones a medida que se ajusten a las necesidades específicas de cada cliente. Utilizamos las tecnologías más recientes y metodologías ágiles para garantizar que el producto final sea de alta calidad y cumpla con los plazos establecidos. Nuestro equipo de expertos trabaja de la mano con los clientes para asegurar que cada detalle sea considerado.",
@@ -243,6 +327,17 @@ footer p {
                     modal.style.display = "none";
                 }
             }
+
+            // Funcionalidad del menú lateral
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+                overlay.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
+            });
+
+            overlay.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                overlay.style.display = 'none';
+            });
         });
     </script>
 </body>
