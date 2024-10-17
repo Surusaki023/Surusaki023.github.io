@@ -3,365 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ColSoft - Soluciones Tecnológicas Innovadoras</title>
-    <link rel="shortcut icon" href="../img/2.jpg" type="image/x-icon">
+    <title>ColSoft - Servicios</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../img/2.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-        :root {
-            --primary-color: #ffd700;
-            --secondary-color: #ff6347;
-            --background-color: #1c1c1c;
-            --text-color: #ffffff;
-            --header-background: #1a1a1a;
-            --about-background: #282828;
-            --footer-background: #333;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            line-height: 1.6;
-        }
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #e9ecef;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.6;
+}
 
-        header {
-            background-color: var(--header-background);
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+header {
+    display: flex;
+    align-items: center; /* Alinea el logo y el menú verticalmente */
+    justify-content: space-between; /* Espacio entre logo y menú */
+    background-color: #3b3b3b;
+    padding: 20px 40px; /* Aumenta el padding para un mejor espaciado */
+}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+.logo {
+    display: inline-block;
+}
 
-        nav ul li {
-            margin: 0 1rem;
-        }
+.logo img {
+    height: 50px; /* Ajusta la altura del logo */
+    width: auto; /* Mantiene la proporción */
+    vertical-align: middle; /* Alinea el logo verticalmente */
+}
 
-        nav ul li a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-        }
+nav {
+    flex-grow: 1; /* Permite que el menú use el espacio restante */
+    text-align: center; /* Centra el contenido del menú */
+}
 
-        nav ul li a:hover, nav ul li a:focus {
-            color: var(--primary-color);
-            background-color: rgba(255,255,255,0.1);
-        }
+nav ul {
+    list-style: none;
+    display: inline-flex; /* Cambiado a inline-flex para centrar */
+    justify-content: center; /* Centra los elementos en la lista */
+    margin: 0;
+    padding: 0;
+}
 
-        .hero {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 80vh;
-            text-align: center;
-            overflow: hidden;
-            padding: 2rem;
-        }
+nav ul li {
+    margin: 0 20px;
+}
 
-        .hero-content {
-            z-index: 1;
-            max-width: 800px;
-        }
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px;
+    transition: color 0.3s;
+}
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out forwards;
-        }
+nav ul li a:hover {
+    color: #ffcd38;
+}
 
-        .hero p {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            color: #dcdcdc;
-            animation: fadeInUp 1.2s ease-out forwards;
-        }
+section.services {
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
 
-        .hero-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
 
-        .hero-shapes .circle {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            top: -50px;
-            left: -50px;
-            opacity: 0.7;
-            animation: moveCircle 15s linear infinite;
-        }
+.service-item {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1 1 250px; /* Flex-grow, flex-shrink, flex-basis */
+    text-align: center;
+}
 
-        .hero-shapes .triangle {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 200px solid transparent;
-            border-right: 200px solid transparent;
-            border-bottom: 400px solid var(--secondary-color);
-            bottom: -100px;
-            right: -100px;
-            opacity: 0.7;
-            transform: rotate(20deg);
-            animation: moveTriangle 20s linear infinite;
-        }
+.service-info {
+    margin-bottom: 10px;
+}
 
-        .about {
-            padding: 4rem 2rem;
-            background-color: var(--about-background);
-        }
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
 
-        .about-content {
-            display: flex;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            gap: 2rem;
-        }
+/* Estilos del modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
 
-        .about-text {
-            flex: 1;
-        }
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-        .about h2 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
 
-        .about p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            margin-bottom: 1rem;
-        }
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 
-        .about-image {
-            flex: 1;
-        }
+footer {
+    background-color: #3b3b3b;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    margin-top: auto;
+}
 
-        .about-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
-        }
+footer p {
+    margin: 0;
+}
 
-        .about-image img:hover {
-            transform: scale(1.05);
-        }
-
-        footer {
-            background-color: var(--footer-background);
-            padding: 1rem 0;
-            text-align: center;
-            color: #dcdcdc;
-            font-size: 0.9rem;
-            margin-top: auto;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes moveCircle {
-            0% { transform: translate(-50px, -50px) rotate(0deg); }
-            100% { transform: translate(-50px, -50px) rotate(360deg); }
-        }
-
-        @keyframes moveTriangle {
-            0% { transform: rotate(20deg) translate(0, 0); }
-            50% { transform: rotate(20deg) translate(-50px, 50px); }
-            100% { transform: rotate(20deg) translate(0, 0); }
-        }
-
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--primary-color);
-            color: var(--background-color);
-            padding: 8px;
-            z-index: 100;
-        }
-
-        .skip-link:focus {
-            top: 0;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--background-color);
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .btn:hover, .btn:focus {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
-        }
-
-        /* Estilos para la navegación móvil */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-color);
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-                position: fixed;
-                top: 1rem;
-                right: 1rem;
-                z-index: 1001;
-            }
-
-            nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 250px;
-                height: 100vh;
-                background-color: var(--header-background);
-                transition: right 0.3s ease;
-                z-index: 1000;
-            }
-
-            nav.active {
-                right: 0;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                padding-top: 4rem;
-            }
-
-            nav ul li {
-                margin: 1rem 0;
-            }
-
-            .hero {
-                min-height: 60vh;
-            }
-
-            .about-content {
-                flex-direction: column;
-            }
-
-            .about-image {
-                order: -1;
-            }
-        }
     </style>
 </head>
 <body>
-    <a href="#main" class="skip-link">Saltar al contenido principal</a>
     <header>
-        <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+        <div class="logo">
+            <img src="../img/4.jpg" alt="ColSoft Logo">
+        </div>
         <nav>
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="mision_vision.html">Misión y Visión</a></li>
-                <li><a href="service.html">Servicios</a></li>
-                <li><a href="Objetivos.html">Objetivos</a></li>
+                <li><a href="index.html"> Inicio</a></li>
+                <li><a href="mision_vision.html"> Misión y Visión</a></li>
+                <li><a href="service.html"> Servicios</a></li>
+                <li><a href="objetivos.html"> Objetivos</a></li>
             </ul>
         </nav>
     </header>
 
-    <main id="main">
-        <div class="hero">
-            <div class="hero-content">
-                <h1>Bienvenidos a ColSoft</h1>
-                <p>Soluciones tecnológicas innovadoras para impulsar tu empresa hacia el futuro</p>
-                <a href="#about" class="btn">Descubre más</a>
+    <section class="services">
+        <h2>Nuestros Servicios</h2>
+        <div class="services-container">
+            <div class="service-item">
+                <div class="service-info">
+                    <i class="fas fa-laptop-code fa-3x"></i>
+                    <h3>Desarrollo de Software</h3>
+                    <p>Ofrecemos soluciones personalizadas para el desarrollo de aplicaciones de software a medida.</p>
+                    <button class="service-btn" data-service="Desarrollo de Software">Más Información</button>
+                </div>
             </div>
-            <div class="hero-shapes" aria-hidden="true">
-                <div class="circle"></div>
-                <div class="triangle"></div>
+
+            <div class="service-item">
+                <div class="service-info">
+                    <i class="fas fa-chalkboard-teacher fa-3x"></i>
+                    <h3>Capacitación en Tecnología</h3>
+                    <p>Brindamos capacitaciones para potenciar las habilidades tecnológicas de tu equipo.</p>
+                    <button class="service-btn" data-service="Capacitación en Tecnología">Más Información</button>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-info">
+                    <i class="fas fa-lightbulb fa-3x"></i>
+                    <h3>Consultoría Tecnológica</h3>
+                    <p>Asesoramos a empresas en la implementación de soluciones tecnológicas eficientes.</p>
+                    <button class="service-btn" data-service="Consultoría Tecnológica">Más Información</button>
+                </div>
             </div>
         </div>
-
-        <section id="about" class="about">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Nosotros</h2>
-                    <p>En ColSoft, nuestra pasión por la tecnología y nuestro profundo conocimiento de las últimas tendencias nos permiten crear software a medida que se adapta perfectamente a las necesidades únicas de tu negocio.</p>
-                    <p>Desde aplicaciones móviles innovadoras hasta sistemas empresariales de gran envergadura, nuestro equipo de expertos trabaja incansablemente para brindarte soluciones eficientes, confiables y a la vanguardia de la tecnología.</p>
-                    <p>Lo que nos distingue es nuestro enfoque centrado en el cliente. Escuchamos atentamente tus metas y desafíos para diseñar y desarrollar software que no solo resuelva tus problemas actuales, sino que también prepare tu empresa para el futuro digital.</p>
-                    <a href="contacto.html" class="btn">Contáctanos</a>
-                </div>
-                <div class="about-image">
-                    <img src="../img/fondo.jpg" alt="Equipo de ColSoft trabajando en soluciones tecnológicas">
-                </div>
-            </div>
-        </section>
-    </main>
+    </section>
 
     <footer>
         <p>&copy; 2024 ColSoft. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Información Adicional</h2>
+            <p id="modalText">Aquí aparecerá la información adicional sobre el servicio seleccionado.</p>
+        </div>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav');
+        document.addEventListener("DOMContentLoaded", function() {
+            const buttons = document.querySelectorAll('.service-btn');
+            const modal = document.getElementById("myModal");
+            const span = document.getElementsByClassName("close")[0];
 
-            menuToggle.addEventListener('click', function() {
-                nav.classList.toggle('active');
-                menuToggle.setAttribute('aria-expanded', 
-                    menuToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
-                );
-            });
+            const serviceInfo = {
+                "Desarrollo de Software": "Nuestro servicio de desarrollo de software se enfoca en crear aplicaciones a medida que se ajusten a las necesidades específicas de cada cliente. Utilizamos las tecnologías más recientes y metodologías ágiles para garantizar que el producto final sea de alta calidad y cumpla con los plazos establecidos. Nuestro equipo de expertos trabaja de la mano con los clientes para asegurar que cada detalle sea considerado.",
+                "Capacitación en Tecnología": "Ofrecemos programas de capacitación diseñados para mejorar las habilidades técnicas de los equipos de trabajo. Nuestras capacitaciones abarcan desde el desarrollo de software hasta la gestión de proyectos tecnológicos, asegurando que tu equipo esté preparado para enfrentar los desafíos del mercado actual. Nos adaptamos a diferentes niveles de conocimiento y ofrecemos cursos prácticos y teóricos.",
+                "Consultoría Tecnológica": "Brindamos servicios de consultoría para ayudar a las empresas a implementar soluciones tecnológicas eficientes. Analizamos los procesos existentes y ofrecemos recomendaciones personalizadas que optimicen la operación y reduzcan costos. Nuestro objetivo es ser un socio estratégico que impulse el crecimiento y la innovación en tu empresa."
+            };
 
-            // Cerrar el menú al hacer clic en un enlace
-            const navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    nav.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const serviceName = this.getAttribute('data-service');
+                    document.getElementById("modalTitle").innerText = serviceName;
+                    document.getElementById("modalText").innerText = serviceInfo[serviceName];
+                    modal.style.display = "block";
                 });
             });
+
+            // Cerrar el modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
         });
     </script>
 </body>
