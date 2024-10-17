@@ -20,59 +20,91 @@
             line-height: 1.6;
         }
 
+        /* Header y navegación */
         header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             background-color: #3b3b3b;
-            padding: 20px 40px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo img {
-            height: 50px;
+            height: 40px;
             width: auto;
         }
 
-        nav {
-            flex-grow: 1;
+        .menu-toggle {
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+            display: none; /* Oculto por defecto, se mostrará en móvil */
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            justify-content: center;
-            align-items: center;
             margin: 0;
             padding: 0;
         }
 
         nav ul li {
-            margin: 0 20px;
+            margin-left: 20px;
         }
 
         nav ul li a {
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1em;
-            padding: 10px;
-            transition: color 0.3s, border-bottom 0.3s;
         }
 
-        nav ul li a:hover {
-            color: #ffcd38;
-            border-bottom: 2px solid #ffcd38;
+        /* Barra lateral */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            transition: 0.3s;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background-color: #222;
+            color: #fff;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px 20px;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            padding: 20px;
         }
 
         /* Misión y visión */
-        section.mission-vision {
-            padding: 60px 20px;
-            background-color: #f8f9fa;
+        .mission-vision {
             display: flex;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
             gap: 40px;
             flex-wrap: wrap;
         }
@@ -83,13 +115,6 @@
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: 20px;
-        }
-
-        .mission:hover, .vision:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
         }
 
         .mission h2, .vision h2 {
@@ -110,66 +135,49 @@
         /* Pie de página */
         footer {
             background-color: #3b3b3b;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             color: #fff;
             font-size: 0.9em;
             margin-top: auto;
         }
 
-        footer p {
-            margin: 0;
+        /* Overlay para cerrar la barra lateral */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
         }
 
-        /* Animación */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .mission-vision {
-            animation: fadeInUp 1s ease-in-out;
-        }
-
-        /* Media Queries para Responsividad */
+        /* Media Queries */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start; /* Alinea a la izquierda en pantallas pequeñas */
+            .menu-toggle {
+                display: block; /* Mostrar en móvil */
             }
 
             nav ul {
-                flex-direction: column; /* Cambia a columna en pantallas pequeñas */
-                width: 100%;
-                align-items: flex-start; /* Alinea los enlaces a la izquierda */
+                display: none; /* Ocultar navegación en móvil */
             }
 
-            nav ul li {
-                margin: 10px 0; /* Espacio vertical entre los enlaces */
-            }
-
-            section.mission-vision {
-                flex-direction: column; /* Cambia a columna en pantallas pequeñas */
-                padding: 40px 10px; /* Ajusta el padding */
+            .mission-vision {
+                flex-direction: column;
             }
 
             .mission, .vision {
-                flex: 1 1 100%; /* Toman todo el ancho en pantallas pequeñas */
-                margin-bottom: 20px; /* Espacio entre tarjetas */
+                flex: 1 1 100%;
             }
 
             .mission h2, .vision h2 {
-                font-size: 2em; /* Tamaño de fuente más pequeño para encabezados */
+                font-size: 2em;
             }
 
             .mission p, .vision p {
-                font-size: 1em; /* Tamaño de fuente más pequeño para párrafos */
+                font-size: 1em;
             }
         }
     </style>
@@ -187,21 +195,55 @@
                 <li><a href="Objetivos.html">Objetivos</a></li>
             </ul>
         </nav>
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
     </header>
 
-    <section class="mission-vision">
-        <div class="mission">
-            <h2>Misión</h2>
-            <p>Nuestra empresa implementa aplicaciones informáticas para cualquier tipo de organización para la sociedad, productos que hayan innovado y mejorado las actividades cotidianas de las personas, siendo estos productos de calidad y eficiencia, un fácil manejo y sean de fácil comprensión para el usuario. Queremos ayudar a educar nuevas personas para su desarrollo formal y profesional hacia los desarrollos del software, para mejorar sus habilidades al máximo en diferentes empresas, además de ser reconocidos mundialmente.</p>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
         </div>
-        <div class="vision">
-            <h2>Visión</h2>
-            <p>Nos vemos en un futuro no muy lejano como una empresa reconocida por mejorar la calidad de varias organizaciones, para educar a personas del común para que estas exploten su máximo potencial.</p>
-        </div>
-    </section>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="mision_vision.html">Misión y Visión</a></li>
+            <li><a href="service.html">Servicios</a></li>
+            <li><a href="Objetivos.html">Objetivos</a></li>
+        </ul>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="main-content">
+        <section class="mission-vision">
+            <div class="mission">
+                <h2>Misión</h2>
+                <p>Nuestra empresa implementa aplicaciones informáticas para cualquier tipo de organización para la sociedad, productos que hayan innovado y mejorado las actividades cotidianas de las personas, siendo estos productos de calidad y eficiencia, un fácil manejo y sean de fácil comprensión para el usuario. Queremos ayudar a educar nuevas personas para su desarrollo formal y profesional hacia los desarrollos del software, para mejorar sus habilidades al máximo en diferentes empresas, además de ser reconocidos mundialmente.</p>
+            </div>
+            <div class="vision">
+                <h2>Visión</h2>
+                <p>Nos vemos en un futuro no muy lejano como una empresa reconocida por mejorar la calidad de varias organizaciones, para educar a personas del común para que estas exploten su máximo potencial.</p>
+            </div>
+        </section>
+    </div>
 
     <footer>
         <p>&copy; 2024 ColSoft. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            overlay.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
