@@ -294,23 +294,27 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+               document.addEventListener("DOMContentLoaded", function() {
             const buttons = document.querySelectorAll('.service-btn');
             const modal = document.getElementById("myModal");
             const span = document.getElementsByClassName("close")[0];
-            const menuToggle = document.getElementById('menu-toggle');
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
+
+            const serviceInfo = {
+                "Desarrollo de Software": "Nuestro servicio de desarrollo de software se enfoca en crear aplicaciones a medida que se ajusten a las necesidades específicas de cada cliente. Utilizamos las tecnologías más recientes y metodologías ágiles para garantizar que el producto final sea de alta calidad y cumpla con los plazos establecidos. Nuestro equipo de expertos trabaja de la mano con los clientes para asegurar que cada detalle sea considerado.",
+                "Capacitación en Tecnología": "Ofrecemos programas de capacitación diseñados para mejorar las habilidades técnicas de los equipos de trabajo. Nuestras capacitaciones abarcan desde el desarrollo de software hasta la gestión de proyectos tecnológicos, asegurando que tu equipo esté preparado para enfrentar los desafíos del mercado actual. Nos adaptamos a diferentes niveles de conocimiento y ofrecemos cursos prácticos y teóricos.",
+                "Consultoría Tecnológica": "Brindamos servicios de consultoría para ayudar a las empresas a implementar soluciones tecnológicas eficientes. Analizamos los procesos existentes y ofrecemos recomendaciones personalizadas que optimicen la operación y reduzcan costos. Nuestro objetivo es ser un socio estratégico que impulse el crecimiento y la innovación en tu empresa."
+            };
 
             buttons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const service = this.getAttribute('data-service');
-                    document.getElementById('modalTitle').textContent = service;
-                    document.getElementById('modalText').textContent = `Aquí hay más información sobre el servicio de ${service}.`;
+                    const serviceName = this.getAttribute('data-service');
+                    document.getElementById("modalTitle").innerText = serviceName;
+                    document.getElementById("modalText").innerText = serviceInfo[serviceName];
                     modal.style.display = "block";
                 });
             });
 
+            // Cerrar el modal
             span.onclick = function() {
                 modal.style.display = "none";
             }
@@ -320,6 +324,7 @@
                     modal.style.display = "none";
                 }
             }
+        });
 
             menuToggle.addEventListener('click', function() {
                 sidebar.classList.toggle('active');
