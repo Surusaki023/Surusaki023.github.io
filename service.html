@@ -22,9 +22,21 @@
         header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-between; 
             background-color: #3b3b3b;
-            padding: 20px 40px;
+            padding: 2px 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end; 
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 10px; /* Reducido el margen entre los enlaces */
         }
 
         .logo img {
@@ -36,23 +48,12 @@
             flex-grow: 1;
         }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 0 20px;
-        }
-
         nav ul li a {
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            padding: 10px;
+            font-size: 0.9em; /* Reducido el tamaño de la fuente */
+            padding: 8px; /* Reducido el padding */
             transition: color 0.3s;
         }
 
@@ -236,8 +237,7 @@
     </header>
 
     <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-        </div>
+        <div class="sidebar-header"></div>
         <ul>
             <li><a href="index.html">Inicio</a></li>
             <li><a href="mision_vision.html">Misión y Visión</a></li>
@@ -302,22 +302,15 @@
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
 
-            const serviceInfo = {
-                "Desarrollo de Software": "Nuestro servicio de desarrollo de software se enfoca en crear aplicaciones a medida que se ajusten a las necesidades específicas de cada cliente. Utilizamos las tecnologías más recientes y metodologías ágiles para garantizar que el producto final sea de alta calidad y cumpla con los plazos establecidos. Nuestro equipo de expertos trabaja de la mano con los clientes para asegurar que cada detalle sea considerado.",
-                "Capacitación en Tecnología": "Ofrecemos programas de capacitación diseñados para mejorar las habilidades técnicas de los equipos de trabajo. Nuestras capacitaciones abarcan desde el desarrollo de software hasta la gestión de proyectos tecnológicos, asegurando que tu equipo esté preparado para enfrentar los desafíos del mercado actual. Nos adaptamos a diferentes niveles de conocimiento y ofrecemos cursos prácticos y teóricos.",
-                "Consultoría Tecnológica": "Brindamos servicios de consultoría para ayudar a las empresas a implementar soluciones tecnológicas eficientes. Analizamos los procesos existentes y ofrecemos recomendaciones personalizadas que optimicen la operación y reduzcan costos. Nuestro objetivo es ser un socio estratégico que impulse el crecimiento y la innovación en tu empresa."
-            };
-
             buttons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const serviceName = this.getAttribute('data-service');
-                    document.getElementById("modalTitle").innerText = serviceName;
-                    document.getElementById("modalText").innerText = serviceInfo[serviceName];
+                    const service = this.getAttribute('data-service');
+                    document.getElementById('modalTitle').textContent = service;
+                    document.getElementById('modalText').textContent = `Aquí hay más información sobre el servicio de ${service}.`;
                     modal.style.display = "block";
                 });
             });
 
-            // Cerrar el modal
             span.onclick = function() {
                 modal.style.display = "none";
             }
@@ -328,13 +321,12 @@
                 }
             }
 
-            // Funcionalidad del menú lateral
-            menuToggle.addEventListener('click', () => {
+            menuToggle.addEventListener('click', function() {
                 sidebar.classList.toggle('active');
                 overlay.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
             });
 
-            overlay.addEventListener('click', () => {
+            overlay.addEventListener('click', function() {
                 sidebar.classList.remove('active');
                 overlay.style.display = 'none';
             });
