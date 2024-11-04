@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColSoft - Misión y Visión</title>
+    <link rel="shortcut icon" href="../img/2.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #e9ecef;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header y navegación */
+        header {
+            background-color: #3b3b3b;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .menu-toggle {
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+            display: none; /* Oculto por defecto, se mostrará en móvil */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Barra lateral */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            transition: 0.3s;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background-color: #222;
+            color: #fff;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px 20px;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            padding: 20px;
+        }
+
+        /* Misión y visión */
+        .mission-vision {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .mission, .vision {
+            flex: 1 1 calc(50% - 20px);
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .mission h2, .vision h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .mission p, .vision p {
+            font-size: 1.2em;
+            color: #555;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #3b3b3b;
+            padding: 15px;
+            text-align: center;
+            color: #fff;
+            font-size: 0.9em;
+            margin-top: auto;
+        }
+
+        /* Overlay para cerrar la barra lateral */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block; /* Mostrar en móvil */
+            }
+
+            nav ul {
+                display: none; /* Ocultar navegación en móvil */
+            }
+
+            .mission-vision {
+                flex-direction: column;
+            }
+
+            .mission, .vision {
+                flex: 1 1 100%;
+            }
+
+            .mission h2, .vision h2 {
+                font-size: 2em;
+            }
+
+            .mission p, .vision p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../img/4.jpg" alt="ColSoft Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="mision_vision.html">Misión y Visión</a></li>
+                <li><a href="service.html">Servicios</a></li>
+                <li><a href="Objetivos.html">Objetivos</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+        </div>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="mision_vision.html">Misión y Visión</a></li>
+            <li><a href="service.html">Servicios</a></li>
+            <li><a href="Objetivos.html">Objetivos</a></li>
+        </ul>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="main-content">
+        <section class="mission-vision">
+            <div class="mission">
+                <h2>Misión</h2>
+                <p>Nuestra empresa implementa aplicaciones informáticas para cualquier tipo de organización para la sociedad, productos que hayan innovado y mejorado las actividades cotidianas de las personas, siendo estos productos de calidad y eficiencia, un fácil manejo y sean de fácil comprensión para el usuario. Queremos ayudar a educar nuevas personas para su desarrollo formal y profesional hacia los desarrollos del software, para mejorar sus habilidades al máximo en diferentes empresas, además de ser reconocidos mundialmente.</p>
+            </div>
+            <div class="vision">
+                <h2>Visión</h2>
+                <p>Nos vemos en un futuro no muy lejano como una empresa reconocida por mejorar la calidad de varias organizaciones, para educar a personas del común para que estas exploten su máximo potencial.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 ColSoft. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            overlay.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
